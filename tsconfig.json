@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "module": "CommonJS",
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "target": "ES2021",
+    "resolveJsonModule": true,
+    "incremental": true,
+    "outDir": "dist",
+    "skipLibCheck": true,
+    "noImplicitAny": false,
+    "strict": true,
+    "declaration": false,
+    "baseUrl": ".",
+    "paths": {
+      "~": ["./src"],
+      "~/*": ["./src/*"],
+      "config": ["./config.ts"]
+    }
+  },
+  "exclude": ["./config.example.ts"]
+}

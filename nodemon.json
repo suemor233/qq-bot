@@ -1,0 +1,7 @@
+{
+  "watch": ["src", "./config.ts"],
+  "ignore": ["src/**/*.test.ts"],
+  "ext": "ts,mjs,js,json,graphql",
+  "exec": "tsx src/index.ts",
+  "legacyWatch": true
+}

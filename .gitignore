@@ -1,0 +1,9 @@
+src/data
+config.ts
+
+dist
+build
+node_modules
+
+formula.txt
+.DS_Store

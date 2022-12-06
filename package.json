@@ -1,0 +1,29 @@
+{
+  "name": "qq-bot",
+  "version": "0.1.0",
+  "license": "MIT",
+  "scripts": {
+    "dev": "NODE_ENV=development nodemon",
+    "build": "tsc",
+    "bundle": "esbuild src/index.ts --platform=node --bundle --minify --outfile=build/index.js --format=esm",
+    "prod": "NODE_ENV=production TS_NODE_BASEURL=./dist node -r tsconfig-paths/register ./dist/src/index.js"
+  },
+  "devDependencies": {
+    "@suemor/eslint-config-ts": "^1.0.1",
+    "@suemor/prettier": "^1.0.1",
+    "@types/node": "^18.11.11",
+    "cron": "^2.1.0",
+    "nodemon": "^2.0.20",
+    "tsx": "^3.12.1",
+    "typescript": "^4.9.3"
+  },
+  "dependencies": {
+    "axios": "^1.2.1",
+    "chalk": "^4",
+    "chatgpt": "^1.4.0",
+    "consola": "^2.15.3",
+    "esbuild": "^0.15.18",
+    "oicq": "^2.3.1",
+    "randomcolor": "^0.6.2"
+  }
+}
