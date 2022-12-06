@@ -10,7 +10,7 @@ export const registerModules = () => {
   })
 }
 
-const weatherForecast = new CronJob('0 19 0 * * *', async () => {
+const weatherForecast = new CronJob('0 0 6 * * *', async () => {
   const weather = await weatherRequest()
   const toWeather = weather.data.data[0]
   const tasks = botConfig.watchGroupIds.map((id) =>
