@@ -1,7 +1,7 @@
 import type { GroupMessageEvent } from 'oicq'
 
 import { botConfig } from '../../../config'
-import { handleChatGPT } from './tasks/handleChatGPT'
+import { handleChatGPT } from './tasks/handleChatgpt'
 import { handleWeather } from './tasks/handleWeather'
 
 export const groupMessageHandler = (e: GroupMessageEvent) => {
