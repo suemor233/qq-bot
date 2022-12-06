@@ -3,6 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@suemor/eslint-config-ts': ^1.0.1
   '@suemor/prettier': ^1.0.1
+  '@types/cron': ^2.0.0
   '@types/node': ^18.11.11
   axios: ^1.2.1
   chalk: ^4
@@ -13,10 +14,12 @@ specifiers:
   nodemon: ^2.0.20
   oicq: ^2.3.1
   randomcolor: ^0.6.2
+  tsconfig-paths: ^4.1.1
   tsx: ^3.12.1
   typescript: ^4.9.3
 
 dependencies:
+  '@types/cron': 2.0.0
   axios: 1.2.1
   chalk: 4.1.2
   chatgpt: 1.4.0
@@ -31,6 +34,7 @@ devDependencies:
   '@types/node': 18.11.11
   cron: 2.1.0
   nodemon: 2.0.20
+  tsconfig-paths: 4.1.1
   tsx: 3.12.1
   typescript: 4.9.3
 
@@ -415,6 +419,13 @@ packages:
       - supports-color
     dev: true
 
+  /@types/cron/2.0.0:
+    resolution: {integrity: sha512-xZM08fqvwIXgghtPVkSPKNgC+JoMQ2OHazEvyTKnNf7aWu1aB6/4lBbQFrb03Td2cUGG7ITzMv3mFYnMu6xRaQ==}
+    dependencies:
+      '@types/luxon': 3.1.0
+      '@types/node': 18.11.11
+    dev: false
+
   /@types/debug/4.1.7:
     resolution: {integrity: sha512-9AonUzyTjXXhEOa0DnqpzZi6VHlqKMswga9EXjpXnnqxwLtdvPPtlO8evrI5D9S6asFRCQ6v+wpiUKbw+vKqyg==}
     dependencies:
@@ -429,6 +440,10 @@ packages:
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
     dev: true
 
+  /@types/luxon/3.1.0:
+    resolution: {integrity: sha512-gCd/HcCgjqSxfMrgtqxCgYk/22NBQfypwFUG7ZAyG/4pqs51WLTcUzVp1hqTbieDYeHS3WoVEh2Yv/2l+7B0Vg==}
+    dev: false
+
   /@types/mdast/3.0.10:
     resolution: {integrity: sha512-W864tg/Osz1+9f4lrGTZpCSO5/z4608eUp19tbozkq2HJK6i3z1kT0H9tlADXuYIb1YYOBByU4Jsqkk75q48qA==}
     dependencies:
@@ -441,7 +456,6 @@ packages:
 
   /@types/node/18.11.11:
     resolution: {integrity: sha512-KJ021B1nlQUBLopzZmPBVuGU9un7WJd/W4ya7Ih02B4Uwky5Nja0yGYav2EfYIk0RR2Q9oVhf60S2XR1BCWJ2g==}
-    dev: true
 
   /@types/parse-author/2.0.1:
     resolution: {integrity: sha512-2RNXvvDY+7ITl/Q3znDpW9DxyAckKgLCXpoiBHN9BeLH1aV7z/W657P2+PK3wVUgGWXtc99ZQy3LkJTGlxLsvA==}
@@ -2885,6 +2899,15 @@ packages:
     dependencies:
       '@types/json5': 0.0.29
       json5: 1.0.1
+      minimist: 1.2.7
+      strip-bom: 3.0.0
+    dev: true
+
+  /tsconfig-paths/4.1.1:
+    resolution: {integrity: sha512-VgPrtLKpRgEAJsMj5Q/I/mXouC6A/7eJ/X4Nuk6o0cRPwBtznYxTCU4FodbexbzH9somBPEXYi0ZkUViUpJ21Q==}
+    engines: {node: '>=6'}
+    dependencies:
+      json5: 2.2.1
       minimist: 1.2.7
       strip-bom: 3.0.0
     dev: true
