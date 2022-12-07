@@ -1,12 +1,15 @@
 import { registerModules } from './modules'
 import { registerLogger } from './utils/logger'
+import { hook } from './utils/plugin'
 
+async function bootstrap() {
+  registerLogger()
+  const { client } = await import('./client')
+  client.login()
 
-  async function bootstrap() {
-    registerLogger()
-    const { client } = await import('./client')
-    await client.login()
-    registerModules()
-  }
+  await registerModules()
 
-  bootstrap()
+  await hook.runAsyncWaterfall(client)
+}
+
+bootstrap()

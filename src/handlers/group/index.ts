@@ -1,34 +1,26 @@
 import type { GroupMessageEvent } from 'oicq'
 
-import { botConfig } from '../../../config'
-import { handleChatGPT } from './tasks/handleChatgpt'
-import { handleEducation } from './tasks/handleEducation'
-import { handleWeather } from './tasks/handleWeather'
+import { Co } from '@innei/next-async'
 
-export const groupMessageHandler = (e: GroupMessageEvent) => {
-  keyworkHandler(e)
-}
+import { commandMessageRoutine } from './tasks/handleCommand'
+import { multiMessageElemRoutine } from './tasks/handleMuti'
+import { groupSingleTextMessageAction } from './tasks/handleSingle'
 
-const keyworkHandler = (e: GroupMessageEvent) => {
-  const currentMessage = e.message[0]
-  if (currentMessage.type === 'at' && currentMessage.qq === botConfig.uid) {
-    return e.reply('没事别@我')
-  }
-  if (currentMessage.type !== 'text') return
-  const keyword = currentMessage.text
-  if (keyword.includes('/chat')) return handleChatGPT(e,keyword)
-  if (keyword.includes('/safe')) return handleEducation(e,keyword)
-  switch (keyword) {
-    case '/ping':
-      e.reply('pong')
-      break
-    case '/weather':
-      handleWeather(e)
-      break
-    case '/help':
-      e.reply(
-        '当前可用的指令有:\nhelp -> 查看帮助\nweather -> 查看天气\nchat -> chatGPT\nsafe -> 代刷安全平台课程 -> 格式: /safe 用户名 密码\nping -> 测试机器人是否在线',
-      )
-      break
-  }
+export const groupMessageHandler = async (e: GroupMessageEvent) => {
+  consola.debug(e.message)
+  const coTask = new Co(
+    {},
+    {
+      automaticNext: false,
+      catchAbortError: true,
+    },
+  )
+  coTask.use(
+    groupSingleTextMessageAction,
+    multiMessageElemRoutine,
+    commandMessageRoutine,
+  )
+  await coTask.start(e)
+
+  return
 }

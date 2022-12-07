@@ -13,6 +13,7 @@
     "@suemor/eslint-config-ts": "^1.0.1",
     "@suemor/prettier": "^1.0.1",
     "@types/node": "^18.11.11",
+    "@types/yargs": "^17.0.16",
     "cron": "^2.1.0",
     "nodemon": "^2.0.20",
     "qs": "^6.11.0",
@@ -21,13 +22,15 @@
     "typescript": "^4.9.3"
   },
   "dependencies": {
+    "@innei/next-async": "^0.2.3",
     "@types/cron": "^2.0.0",
     "axios": "^1.2.1",
     "chalk": "^4",
-    "chatgpt": "^1.4.0",
+    "chatgpt": "^2.0.1",
     "consola": "^2.15.3",
     "esbuild": "^0.15.18",
     "oicq": "^2.3.1",
-    "randomcolor": "^0.6.2"
+    "randomcolor": "^0.6.2",
+    "yargs": "^17.6.2"
   }
 }
