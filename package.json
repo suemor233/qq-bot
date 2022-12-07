@@ -7,7 +7,7 @@
     "build": "tsc",
     "bundle": "esbuild src/index.ts --platform=node --bundle --minify --outfile=build/index.js --format=esm",
     "prod": "NODE_ENV=production TS_NODE_BASEURL=./dist node -r tsconfig-paths/register ./dist/src/index.js",
-    "rebuild-start": "git pull && npm run build && pm2 reload ecosystem.config.js --update-env"
+    "prod:pm2": "pnpm i && pnpm run build && pm2 reload ecosystem.config.js --update-env"
   },
   "devDependencies": {
     "@suemor/eslint-config-ts": "^1.0.1",
