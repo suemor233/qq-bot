@@ -1,6 +1,6 @@
 import axios from 'axios'
-import { botConfig } from 'config'
 import qs from 'qs'
+import { botConfig } from 'config';
 
 export const educationLoginRequest = ({
   username,
