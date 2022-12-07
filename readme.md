@@ -8,4 +8,4 @@
 
 ## 参考
 
-[imx-bot]('https://github.com/Innei/imx-bot')
+[imx-bot](https://github.com/Innei/imx-bot)
