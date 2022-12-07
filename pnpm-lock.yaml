@@ -13,6 +13,7 @@ specifiers:
   esbuild: ^0.15.18
   nodemon: ^2.0.20
   oicq: ^2.3.1
+  qs: ^6.11.0
   randomcolor: ^0.6.2
   tsconfig-paths: ^4.1.1
   tsx: ^3.12.1
@@ -34,6 +35,7 @@ devDependencies:
   '@types/node': 18.11.11
   cron: 2.1.0
   nodemon: 2.0.20
+  qs: 6.11.0
   tsconfig-paths: 4.1.1
   tsx: 3.12.1
   typescript: 4.9.3
@@ -2591,6 +2593,13 @@ packages:
   /punycode/2.1.1:
     resolution: {integrity: sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A==}
     engines: {node: '>=6'}
+    dev: true
+
+  /qs/6.11.0:
+    resolution: {integrity: sha512-MvjoMCJwEarSbUYk5O+nmoSzSutSsTwF85zcHPQ9OrlFoZOYIjaqBAJIqIXjptyD5vThxGq52Xu/MaJzRkIk4Q==}
+    engines: {node: '>=0.6'}
+    dependencies:
+      side-channel: 1.0.4
     dev: true
 
   /queue-microtask/1.2.3:
