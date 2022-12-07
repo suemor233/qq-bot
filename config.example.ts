@@ -1,13 +1,19 @@
 import { Platform } from 'oicq'
 
 export const botConfig = {
-  groupIds: [],
+  groupIds: [58506],
   password: '',
-  uid: 23333333,
+  uid: 1234,
 
   platform: Platform.iPad,
-  watchGroupIds: [],
+  watchGroupIds: [58506],
   chatgpt: {
     token: '',
+  },
+  fhmooc: {
+    schoolId: 'f0zaggsmzxdscolohmtaa',
+  },
+  weather: {
+    cite: '常州',
   },
 }

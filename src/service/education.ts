@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { botConfig } from 'config'
 import qs from 'qs'
 
 export const educationLoginRequest = ({
@@ -11,7 +12,7 @@ export const educationLoginRequest = ({
   return axios.post(
     'https://aq.fhmooc.com/api/common/Login/login',
     qs.stringify({
-      schoolId: 'f0zaggsmzxdscolohmtaa',
+      schoolId: botConfig.fhmooc.schoolId,
       userName: username,
       userPwd: password,
     }),
@@ -19,7 +20,6 @@ export const educationLoginRequest = ({
 }
 
 export const educationProcessRequest = ({ cookie }: { cookie: string }) => {
-
   return axios({
     url: 'https://aq.fhmooc.com/api/design/LearnCourse/statStuProcessCellLogAndTimeLong',
     method: 'post',
