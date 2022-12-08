@@ -1,12 +1,11 @@
-import { ChatGPTAPI } from 'chatgpt'
+import cgpt from 'chatgpt-lib'
 import { botConfig } from 'config'
 
 import { commandRegistry } from '~/registries/command'
 
 export const register = async () => {
-  const api = new ChatGPTAPI({
-    sessionToken: botConfig.chatgpt.token,
-    markdown: false,
+  const chatbot = new cgpt.ChatGPT({
+    SessionToken: botConfig.chatgpt.token,
   })
 
   commandRegistry.register('chat', async (event) => {
@@ -24,9 +23,7 @@ export const register = async () => {
       return
     }
     try {
-      const response = await api.sendMessage(msg,{
-        timeoutMs: 2 * 60 * 1000
-      })
+      const response = await chatbot.ask(msg)
       event.reply(response, true)
     } catch (error) {
       console.log(error)
