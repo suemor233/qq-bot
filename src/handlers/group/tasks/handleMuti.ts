@@ -7,7 +7,6 @@ import type { GroupCoRoutine } from '../types'
 
 export const multiMessageElemRoutine: GroupCoRoutine = async function (event) {
   const { message } = event
-  console.log(event, ' ===')
   if (message[0].type === 'at' && message[0].qq == botConfig.uid) {
     return event.reply('没事别@我 👊')
   }

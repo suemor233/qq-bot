@@ -8,7 +8,6 @@ import { weatherRequest } from '~/service/weather'
 export const register = () => {
   commandRegistry.register('wea', async (event) => {
     const weather = await weatherRequest()
-
     const toWeather = weather.data.data[0]
     const tmrWeather = weather.data.data[1]
     event.reply(
