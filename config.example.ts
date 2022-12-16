@@ -11,7 +11,7 @@ export const botConfig = {
     token: '',
   },
   fhmooc: {
-    schoolId: 'f0zaggsmzxdscolohmtaa',
+    schoolId: 'f0zaggsmzxdscolohmtaa', // 改为你学校的 schoolId
   },
   weather: {
     cite: '常州',

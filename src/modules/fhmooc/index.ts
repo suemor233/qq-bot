@@ -1,10 +1,13 @@
-
+import axios from 'axios'
+import qs from 'qs'
 
 import { commandRegistry } from '~/registries/command'
 import {
   educationLoginRequest,
   educationProcessRequest,
 } from '~/service/education'
+
+import { answerLibrary } from './answer'
 
 export const register = () => {
   commandRegistry.register('safe', async (event) => {
@@ -30,13 +33,80 @@ export const register = () => {
       return
     }
 
+    await educationProcessRequest({
+      cookie: user.headers['set-cookie'][1],
+    })
     const { data } = await educationProcessRequest({
       cookie: user.headers['set-cookie'][1],
     })
+
     if (data.code == 1) {
-      event.reply('刷课成功', true)
+      event.reply('时长刷课成功', true)
     } else {
-      event.reply('未知错误', true)
+      event.reply('时长刷课出现未知错误', true)
+    }
+
+    const cookie = user.headers['set-cookie'][1]
+
+    const {
+      data: { paperId, paperStuId, stuPaperQuesList },
+    } = await axios({
+      url: 'https://aq.fhmooc.com/api/design/PaperStudent/getStuPaper',
+      method: 'post',
+      headers: {
+        Cookie: cookie,
+      },
+      data: qs.stringify({
+        courseId: 'qkcfawcsxyrom0zrwghhwq',
+      }),
+    })
+
+    await stuPaperQuesList.map(async (item: any) => {
+      const answerJson: { quesId: string; answer: number | string } = {
+        quesId: '',
+        answer: 0,
+      }
+      const res = answerLibrary.find(
+        (itemLib) => itemLib.paperQuestionId === item.quesId,
+      )
+      if (res) {
+        answerJson.quesId = item.quesId
+        if (item.quesType == 1 || item.quesType == 3) {
+          answerJson.answer = Number(res.answers[0])
+        } else {
+          answerJson.answer = res.answers.join('；')
+        }
+        await axios({
+          url: 'https://aq.fhmooc.com/api/design/PaperStudent/saveStuQuesAnswer',
+          method: 'post',
+          headers: {
+            Cookie: cookie,
+          },
+          data: qs.stringify({
+            paperStuId,
+            paperId,
+            quesId: item.quesId,
+            answerJson: JSON.stringify(answerJson),
+          }),
+        })
+      }
+    })
+
+    const test = await axios({
+      url: 'https://aq.fhmooc.com/api/design/PaperStudent/submitStuPaper',
+      method: 'post',
+      headers: {
+        Cookie: cookie,
+      },
+      data: qs.stringify({
+        paperStuId,
+        paperId,
+      }),
+    })
+    if (test.data.code == 1) {
+      event.reply('刷题成功', true)
+    } else {
+      event.reply('刷题失败', true)
     }
   })
 }

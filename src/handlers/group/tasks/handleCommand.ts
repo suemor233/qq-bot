@@ -35,7 +35,7 @@ export const commandMessageRoutine: GroupCoRoutine = async function (event) {
     }
     case 'help':
       event.reply(
-        '当前可用的指令有:\nhelp -> 查看帮助\nwea -> 查看天气\nchat -> chatGPT\nsafe -> 代刷安全平台课程 -> 格式: /safe 用户名 密码\nping -> 测试机器人是否在线\nuptime -> 运行时间',
+        '当前可用的指令有:\nhelp -> 查看帮助\nwea -> 查看天气\nchat -> chatGPT\nsafe -> 代刷安全平台时长和测试 -> 格式: /safe 用户名 密码\nping -> 测试机器人是否在线\nuptime -> 运行时间',
       )
       break
   }
